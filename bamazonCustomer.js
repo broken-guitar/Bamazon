@@ -20,7 +20,7 @@ inputProduct = [
         message: "Enter the id of a product to buy:",
         default: 1,
         validate: val => {
-           // check that input is a number and is one of available product Ids
+           // validate user input is a number and is a product id in inventory
             if (!isNaN(val) && productIds.indexOf(val) >= 0) {
                return true;
             } else {
@@ -31,13 +31,13 @@ inputProduct = [
     {
         type: "number",
         name: "productQty",
-        message: "Enter quantity of the product to buy:",
+        message: "Enter quantity number of the product to buy:",
         default: 1,
         validate: val => {
             if (!isNaN(val)) {
                 return true;
             } else {
-                return "Please enter the id number of a product in our catalog";
+                return "Please enter a number value.";
             }
         }
     }
@@ -100,7 +100,7 @@ function saleProduct() {
                             saleProduct();
                         } else {
                             console.log("\nThank you for visiting. Have a nice day!");
-                            process.exit();
+                            closeApp();
                         }
                     });
             }
@@ -110,6 +110,12 @@ function saleProduct() {
 
 
 // ### FUNCTIONS
+
+// close connect and exit
+function closeApp() {
+    bamazonDb.end();
+    process.exit();
+};
 
 // helper - check if string is empty
 function isEmpty(string) {
