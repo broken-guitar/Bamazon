@@ -13,23 +13,11 @@ const bamazonDb = mysql.createConnection({
     database: "bamazon"
 });
 
-var menuInput = [{ 
-    type: "rawlist", name: "mainMenu", message: "Select an option",
-    choices: [
-       "View Products for Sale",
-       "View Low Inventory",
-       "Add to Inventory",
-       "Add New Product",
-       "Quit"
-    ], default: 1
-}];
-
-// ### START
-
+// >>>>> START <<<<<
 
 showMenu(); // show menu to user
 
-// ### FUNCTIONS
+// ***** FUNCTIONS *****
 
 function showMenu() {
     inquirer.prompt([{ 
@@ -51,7 +39,7 @@ function showMenu() {
             case "Quit": closeApp(); break;
             default: break;
         }      
-});
+    });
 };
 
 // query db for all products and columns and display results to user
@@ -99,7 +87,6 @@ function addInventory() {
                      if (!isNaN(val) && productIds.indexOf(val) >= 0) {
                         return true;
                      } else {
-                        console.log
                         return "Enter the id of a product in inventory!";
                      }
                  }
@@ -108,11 +95,10 @@ function addInventory() {
                 validate: val => isNaN(val) ? "Please enter a number as quantity to add." : true
             }
         ]).then(answers => {
-            bamazonDb.query("UPDATE products SET ? WHERE ?;", [
-                {stock_quantity: answers.quantity}, {id: answers.productId}
+            bamazonDb.query("UPDATE products SET stock_quantity = stock_quantity + ? WHERE ?;", [
+                answers.quantity, {id: answers.productId}
             ], (err, result) => {
-                    if (err) throw err;
-                    console.table(result);
+                    if (err) throw err;4
                     console.log("\nProduct quantity updated successfully!\n");
                     showMenu(); // return user to selection menu
             });
