@@ -15,12 +15,12 @@ npm install path - https://www.npmjs.com/package/path
 
 ## Technologies Used
 
-NodeJS
-JavaScript
-NPM Express
-HTML
-Jquery
-CSS
+* NodeJS
+* JavaScript
+* NPM Express
+* HTML
+* Jquery
+* CSS
 
 # Author
 David Flores
