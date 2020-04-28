@@ -41,7 +41,7 @@ Commands | Description
 **Create New Department**             | Create a new product department.
 
 ## Demo
-![bamazon-demo](https://user-images.githubusercontent.com/59757720/78717637-c6fc1d80-78d5-11ea-828f-df59aadeefa1.gif)
+![bamazon-demo](https://user-images.githubusercontent.com/59757720/80436793-cf33f100-88b4-11ea-88b6-15a76e6f1f84.gif)
 
 ## Built with
 * NodeJS
